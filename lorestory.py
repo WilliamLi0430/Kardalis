@@ -25,3 +25,14 @@ for line in message:
     print(line)
     break
 
+#Started adding a tutorial to the first goblin battle
+messages[
+    "Congratulations!"
+    "You have defeated your first goblin!"
+    "After every battle, win or loss, you can earn items and complete quests."
+    "This way, you can grow more powerful and take on stronger enemies."
+]
+for line in message:
+    time.sleep(2)
+    print(line)
+    break

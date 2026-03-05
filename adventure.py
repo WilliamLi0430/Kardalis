@@ -3,6 +3,21 @@ import time
 #add levels, chests, equippables, more enemies, fix random randint somehow
 
 #Wow an enemy
+
+messages = [
+    "Welcome to (GAME NAME)!",
+    "This game is about you fighting monsters and slowly getting more powerful,",
+    "finally being able to defeat the last boss.",
+    "I would say similar stuff to those game ads you see online,",
+    "but that's just way too cringe to put here.",
+    "Anyways, enjoy this game!"
+]
+for line in messages:
+    time.sleep(2)
+    print(line)
+
+time.sleep(2)
+
 class Enemy:
     def __init__(self, name, health, damage):
         self.name = name
@@ -135,10 +150,13 @@ while True:
 print(character.__dict__)
 time.sleep(2)
 
+#Tutorial begins
+
 print("Game starting...")
 time.sleep(2)
 goblin = Enemy("Goblin", 300, 25)
 
+#fix this part, it doesn't print the class name correctly
 message = [
     f"Alright, you have chosen class {character.__class__}.",
     "Now, let's test your skills by fighting a goblin!"
@@ -174,7 +192,16 @@ def battle():
             print(f"{goblin.name} is now at {goblin.health} health.")
             if goblin.health <= 0:
                 print(f"{goblin.name} has been defeated!")
-                return
+                messages[
+                    "Congratulations!"
+                    "You have defeated your first goblin!"
+                    "After every battle, win or loss, you can earn items and complete quests."
+                    "This way, you can grow more powerful and take on stronger enemies."
+                ]
+                for line in message:
+                    time.sleep(2)
+                    print(line)
+                    break
 
         elif action == 2:
             if not character.inventory:
