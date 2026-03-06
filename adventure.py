@@ -5,7 +5,7 @@ import time
 #Wow an enemy
 
 messages = [
-    "Welcome to (GAME NAME)!",
+    "Welcome to Anifighter RPG!",
     "This game is about you fighting monsters and slowly getting more powerful,",
     "finally being able to defeat the last boss.",
     "I would say similar stuff to those game ads you see online,",
