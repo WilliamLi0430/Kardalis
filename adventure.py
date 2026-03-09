@@ -2,8 +2,6 @@ import random
 import time
 #add levels, chests, equippables, more enemies, fix random randint somehow
 
-#Wow an enemy
-
 messages = [
     "Welcome to Anifighter RPG!",
     "This game is about you fighting monsters and slowly getting more powerful,",
@@ -17,6 +15,8 @@ for line in messages:
     print(line)
 
 time.sleep(2)
+
+#Wow an enemy
 
 class Enemy:
     def __init__(self, name, health, damage):
@@ -164,13 +164,15 @@ time.sleep(2)
 print("Now, let's test your skills by fighting a goblin!")
 time.sleep(1)
 
-goblin = Enemy("Goblin", 300, 25)
+goblin = Enemy("Goblin", 200, 25)
 
 def battle():
     print(f"{character.name} is now fighting {goblin.name}!")
     time.sleep(2)
+    abilityuse = 0
 
     while character.health > 0 and goblin.health > 0:
+        print("")
         print(f"{character.name} is now attacking!")
         time.sleep(2)
         print(f"What will {character.name} do? ")
@@ -209,6 +211,9 @@ def battle():
                 continue
 
         elif action == 3:
+            if abilityuse >= 3:
+                print("You have run out of ability usages this battle.")
+                continue
             for i, ability in enumerate(character.abilities, start=1):
                 print(f"{i}. {ability['abilityName']} (Damage: {ability['Damage']}, Heal: {ability['Heal']})")
 
@@ -219,6 +224,7 @@ def battle():
             character.health += chosen["Heal"]
 
             print(f"{character.name} used {chosen['abilityName']}!")
+            abilityuse = abilityuse + 1
             time.sleep(2)
             print(f"{character.name} did {chosen['Damage']} damage to {goblin.name}!")
             time.sleep(2)
