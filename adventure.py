@@ -117,6 +117,11 @@ class Penguin(Character):
             {"abilityName": "Penguin Beak Attack", "Damage": 25, "Heal": 10},
             {"abilityName": "Penguin Stomp", "Damage": random.randint(15, 40), "Heal": 0}
         ]
+    def __add__(self, gold):
+        if isinstance(gold, int):
+            return Penguin(self.value + gold)
+        elif isinstance(gold, Penguin):
+            return Penguin(self.value + gold.value)
 
 while True:
     classify = input("What class would you like to be? Damage, Tank, Healer, Support, Poison, Sniper, Hypnotist. ").lower()
@@ -163,6 +168,7 @@ time.sleep(2)
 print(f"Alright, you have chosen class {character.classed}.")
 time.sleep(2)
 print("Now, let's test your skills by fighting a goblin!")
+print("")
 time.sleep(1)
 
 goblin = Enemy("Goblin", 200, 25)
@@ -173,7 +179,6 @@ def battle():
     abilityuse = 0
 
     while character.health > 0 and goblin.health > 0:
-        print("")
         print(f"{character.name} is now attacking!")
         time.sleep(2)
         print(f"What will {character.name} do? ")
@@ -270,11 +275,11 @@ print("You have recieved a chest!")
 def chest():
     goldgain = random.randint(30,80)
 
-    commonitem = []
-    rareitem = []
-    epicitem = []
-    legendaryitem = []
-    mythicitem = []
+    commonitem = ["placeholder1"]
+    rareitem = ["placeholder2"]
+    epicitem = ["placeholder3"]
+    legendaryitem = ["placeholder4"]
+    mythicitem = ["placeholder5"]
 
     decider = random.randint(1,100)
 
@@ -294,5 +299,12 @@ def chest():
         itemgot = mythicitem
         rarity = "Mythic"
 
+
+    character.inventory.append(itemgot)
+    character.gold.add(goldgain)
     print(f"You have recieved {goldgain} gold and found a {rarity} {itemgot}!")
     return itemgot, goldgain
+
+chest()
+print(character.inventory)
+print(character.gold)
