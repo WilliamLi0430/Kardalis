@@ -266,4 +266,33 @@ battle()
 print("You have gained 10 XP!")
 time.sleep(1)
 print("You have recieved a chest!")
-random.randint(1-50)
+
+def chest():
+    goldgain = random.randint(30,80)
+
+    commonitem = []
+    rareitem = []
+    epicitem = []
+    legendaryitem = []
+    mythicitem = []
+
+    decider = random.randint(1,100)
+
+    if decider < 51:
+        itemgot = commonitem
+        rarity = "Common"
+    elif decider < 75:
+        itemgot = rareitem
+        rarity = "Rare"
+    elif decider < 89:
+        itemgot = epicitem
+        rarity = "Epic"
+    elif decider < 97:
+        itemgot = legendaryitem
+        rarity = "Legendary"
+    else:
+        itemgot = mythicitem
+        rarity = "Mythic"
+
+    print(f"You have recieved {goldgain} gold and found a {rarity} {itemgot}!")
+    return itemgot, goldgain
