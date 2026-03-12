@@ -24,6 +24,13 @@ class Enemy:
         self.health = health
         self.damage = damage
 
+class TutorialGoblin(Enemy):
+    def __init__(self, name, health, damage):
+        super().__init__(self, name, health, damage)
+        self.name = name
+        self.health = health
+        self.damage = damage
+
 class Character:
     def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
         self.name = name
@@ -127,7 +134,7 @@ while True:
     classify = input("What class would you like to be? Damage, Tank, Healer, Support, Poison, Sniper, Hypnotist. ").lower()
     if classify == ("damage"):
         naming = input("What is your name? ")
-        character = Penguin(naming, 175, 30, 0, [], [], [], "Penguin", 0)
+        character = Penguin(naming, 175, 300, 0, [], [], [], "Penguin", 0)
         break
     if classify == ("tank"):
         naming = input("What is your name? ")
@@ -171,14 +178,14 @@ print("Now, let's test your skills by fighting a goblin!")
 print("")
 time.sleep(1)
 
-goblin = Enemy("Goblin", 200, 25)
+tutorialgoblin = TutorialGoblin("Goblin", 200, 25)
 
 def tutorialbattle():
-    print(f"{character.name} is now fighting {goblin.name}!")
+    print(f"{character.name} is now fighting {tutorialgoblin.name}!")
     time.sleep(2)
     abilityuse = 0
 
-    while character.health > 0 and goblin.health > 0:
+    while character.health > 0 and tutorialgoblin.health > 0:
         print(f"{character.name} is now attacking!")
         time.sleep(2)
         print(f"What will {character.name} do? ")
@@ -192,19 +199,19 @@ def tutorialbattle():
         print("4. Run away")
         action = int(input("Write 1, 2, 3, or 4: "))
         if action == 1:
-            print(f"{character.name} did {character.damage} damage to {goblin.name}!")
-            goblin.health = goblin.health - character.damage
+            print(f"{character.name} did {character.damage} damage to {tutorialgoblin.name}!")
+            tutorialgoblin.health = tutorialgoblin.health - character.damage
             time.sleep(2)
-            if goblin.health <= 0:
-                goblin.health = 0
-            print(f"{goblin.name} is now at {goblin.health} health.")
-            if goblin.health <= 0:
-                print(f"{goblin.name} has been defeated!")
-                messages[
-                    "Congratulations!"
-                    "You have defeated your first goblin!"
-                    "After winning a battle, you gain XP and a chest."
-                    "After every battle, win or loss, you can earn items, complete quests, and use the shop."
+            if tutorialgoblin.health <= 0:
+                tutorialgoblin.health = 0
+            print(f"{tutorialgoblin.name} is now at {tutorialgoblin.health} health.")
+            if tutorialgoblin.health <= 0:
+                print(f"{tutorialgoblin.health} has been defeated!")
+                messages = [
+                    "Congratulations!",
+                    "You have defeated your first goblin!",
+                    "After winning a battle, you gain XP and a chest.",
+                    "After every battle, win or loss, you can earn items, complete quests, and use the shop.",
                     "This way, you can grow more powerful and take on stronger enemies."
                 ]
                 for line in messages:
@@ -227,27 +234,27 @@ def tutorialbattle():
             chooseability = int(input("Which ability would you like to use? ")) - 1
             chosen = character.abilities[chooseability]
 
-            goblin.health -= chosen["Damage"]
+            tutorialgoblin.health -= chosen["Damage"]
             character.health += chosen["Heal"]
 
             print(f"{character.name} used {chosen['abilityName']}!")
             abilityuse = abilityuse + 1
             time.sleep(2)
-            print(f"{character.name} did {chosen['Damage']} damage to {goblin.name}!")
+            print(f"{character.name} did {chosen['Damage']} damage to {tutorialgoblin.name}!")
             time.sleep(2)
-            if goblin.health <= 0:
-                goblin.health = 0
-            print(f"{goblin.name} is now at {goblin.health} health.")
+            if tutorialgoblin.health <= 0:
+                tutorialgoblin.health = 0
+            print(f"{tutorialgoblin.name} is now at {tutorialgoblin.health} health.")
             time.sleep(2)
             print(f"{character.name} is now at {character.health} health.")
             time.sleep(1)
-            if goblin.health <= 0:
-                print(f"{goblin.name} has been defeated!")
-                messages[
-                    "Congratulations!"
-                    "You have defeated your first goblin!"
-                    "After winning a battle, you gain XP and a chest."
-                    "After every battle, win or loss, you can earn items, complete quests, and use the shop."
+            if tutorialgoblin.health <= 0:
+                print(f"{tutorialgoblin.name} has been defeated!")
+                messages = [
+                    "Congratulations!",
+                    "You have defeated your first goblin!",
+                    "After winning a battle, you gain XP and a chest.",
+                    "After every battle, win or loss, you can earn items, complete quests, and use the shop.",
                     "This way, you can grow more powerful and take on stronger enemies."
                 ]
                 for line in messages:
@@ -265,10 +272,10 @@ def tutorialbattle():
         
         time.sleep(2)
         print(" ")
-        print(f"{goblin.name} is now attacking!")
+        print(f"{tutorialgoblin.name} is now attacking!")
         time.sleep(2)
-        print(f"{goblin.name} did {goblin.damage} damage to {character.name}!")
-        character.health = character.health - goblin.damage
+        print(f"{tutorialgoblin.name} did {tutorialgoblin.damage} damage to {character.name}!")
+        character.health = character.health - tutorialgoblin.damage
         time.sleep(2)
         print(f"{character.name} is now at {character.health} health.")
         print(" ")
@@ -278,6 +285,8 @@ def tutorialbattle():
             return
 
 tutorialbattle()
+
+goblin = Enemy("Goblin", 200, 25)
 
 def battle():
     print(f"{character.name} is now fighting {goblin.name}!")
@@ -363,7 +372,7 @@ def battle():
             print(f"{character.name} has been defeated!")
             return
         
-battle()
+# battle()
 print("You have gained 10 XP!")
 time.sleep(1)
 print("You have recieved a chest!")
