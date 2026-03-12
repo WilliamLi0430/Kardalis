@@ -32,7 +32,7 @@ class Character:
         self.shield = shield
         self.inventory = inventory
         self.abilities = []
-        self.enquipinven = equipinven
+        self.equipinven = equipinven
         self.equippables = equippables
         self.classed = classed
         self.gold = gold
