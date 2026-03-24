@@ -24,6 +24,12 @@ class Enemy:
         self.health = health
         self.damage = damage
 
+class Shopkeeper:
+    def __init__(self, name, health, damage):
+        self.name = name
+        self.health = health
+        self.damage = damage
+
 class TutorialGoblin(Enemy):
     def __init__(self, name, health, damage):
         super().__init__(name, health, damage)
@@ -288,6 +294,20 @@ def tutorialbattle():
             return
 
 tutorialbattle()
+
+messages = [
+    "Every time you finish a battle, you can do many things!"
+    "But to do those things, you first need a map."
+    "Here. This is the Map of Kardalis, the continent you are on right now."
+    "With this map, you now have access to shops, trades, adventures, quests, and more!"
+]
+for line in messages:
+    time.sleep(2)
+    print(line)
+    break
+
+character.inventory.append("Map of Kardalis")
+print(character.inventory)
 
 goblin = Enemy("Goblin", 200, 25)
 
