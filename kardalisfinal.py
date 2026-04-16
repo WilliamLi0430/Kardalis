@@ -38,7 +38,7 @@ class TutorialGoblin(Enemy):
         self.damage = damage
 
 class Character:
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor):
         self.name = name
         self.health = health
         self.damage = damage
@@ -52,8 +52,8 @@ class Character:
 
 # Cat is hypnotist
 class Cat(Character):
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
-        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold)
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor):
+        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor)
         self.abilities = [
             {"abilityName": "Cat Meow", "Damage": 0, "Heal": 25},
             {"abilityName": "Cat Eyes", "Damage": random.randint(0, 40), "Heal": 5},
@@ -63,8 +63,8 @@ class Cat(Character):
 
 #Falcon is sniper
 class Falcon(Character):
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
-        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold)
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor):
+        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor)
         self.abilities = [
             {"abilityName": "Falcon Dive", "Damage": 75, "Heal": 0},
             {"abilityName": "Falcon Feathers", "Damage": 20, "Heal": 0},
@@ -76,8 +76,8 @@ class Falcon(Character):
 #Snake is poison
 #ADD PERIODIC POISON
 class Snake(Character):
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
-        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold)
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor):
+        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor)
         self.abilities = [
             {"abilityName": "Snake Venom", "Damage": 33, "Heal": 0},
             {"abilityName": "Snake Crush", "Damage": 50, "Heal": 0},
@@ -89,8 +89,8 @@ class Snake(Character):
 #ADD PERIODIC HEALS
 #frog boost boosts dmg, frog assist boosts hp or shield
 class Frog(Character):
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
-        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold)
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor,):
+        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor)
         self.abilities = [
             {"abilityName": "Frog Boost", "Damage": 20, "Heal": 5},
             {"abilityName": "Frog Assist", "Damage": 5, "Heal": 20},
@@ -99,8 +99,8 @@ class Frog(Character):
 
 #Shark is tank
 class Shark(Character):
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
-        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold)
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor):
+        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor)
         self.abilities = [
             {"abilityName": "Shark Attack", "Damage": 50, "Heal": 0},
             {"abilityName": "Shark Fin", "Damage": 40, "Heal": 15},
@@ -111,8 +111,8 @@ class Shark(Character):
 
 #Bunny is healer
 class Bunny(Character):
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
-        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold)
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor):
+        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor)
         self.abilities = [
             {"abilityName": "Bunny Heal", "Damage": 0, "Heal": 50},
             {"abilityName": "Bunny Shield", "Damage": 10, "Heal": 30},
@@ -121,8 +121,8 @@ class Bunny(Character):
 
 #Penguin is damage
 class Penguin(Character):
-    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold):
-        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold)
+    def __init__(self, name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor):
+        super().__init__(name, health, damage, shield, inventory, equipinven, equippables, classed, gold, armor)
         self.abilities = [
             {"abilityName": "Penguin Slap", "Damage": 35, "Heal": 0},
             {"abilityName": "Penguin Punch", "Damage": 50, "Heal": 0},
@@ -130,41 +130,36 @@ class Penguin(Character):
             {"abilityName": "Penguin Beak Attack", "Damage": 25, "Heal": 10},
             {"abilityName": "Penguin Stomp", "Damage": random.randint(15, 40), "Heal": 0}
         ]
-    def __add__(self, gold):
-        if isinstance(gold, int):
-            return Penguin(self.value + gold)
-        elif isinstance(gold, Penguin):
-            return Penguin(self.value + gold.value)
 
 while True:
     classify = input("What class would you like to be? Damage, Tank, Healer, Support, Poison, Sniper, Hypnotist. ").lower()
     if classify == ("damage"):
         naming = input("What is your name? ")
-        character = Penguin(naming, 175, 30, 0, [], [], [], "Penguin", 0)
+        character = Penguin(naming, 175, 30, 0, [], [], [], "Penguin", 0, 0)
         break
     if classify == ("tank"):
         naming = input("What is your name? ")
-        character = Shark(naming, 250, 10, 10, [], [], [], "Shark", 0)
+        character = Shark(naming, 250, 10, 10, [], [], [], "Shark", 0, 0)
         break
     elif classify == ("healer"):
         naming = input("What is your name? ")
-        character = Bunny(naming, 200, 10, 0, [], [], [], "Bunny", 0)
+        character = Bunny(naming, 200, 10, 0, [], [], [], "Bunny", 0, 0)
         break
     elif classify == ("support"):
         naming = input("What is your name? ")
-        character = Frog(naming, 200, 10, 0, [], [], [], "Frog", 0)
+        character = Frog(naming, 200, 10, 0, [], [], [], "Frog", 0, 0)
         break
     elif classify == ("poison"):
         naming = input("What is your name? ")
-        character = Snake(naming, 200, 15, 0, [], [], [], "Snake", 0)
+        character = Snake(naming, 200, 15, 0, [], [], [], "Snake", 0, 0)
         break
     elif classify == ("sniper"):
         naming = input("What is your name? ")
-        character = Falcon(naming, 175, 25, 0, [], [], [], "Falcon", 0)
+        character = Falcon(naming, 175, 25, 0, [], [], [], "Falcon", 0, 0)
         break
     elif classify == ("hypnotist"):
         naming = input("What is your name? ")
-        character = Cat(naming, 200, random.randint(5, 25), 0, [], [], [], "Cat", 0)
+        character = Cat(naming, 200, random.randint(5, 25), 0, [], [], [], "Cat", 0, 0)
         break
     else:
         print("Class not found. Maybe you misspelled the class name?")

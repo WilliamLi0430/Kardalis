@@ -36,3 +36,31 @@ for line in message:
     time.sleep(2)
     print(line)
     break
+
+#this happens when the tutorial battle ends
+messages = [
+    "Every time you finish a battle, you can do many things!"
+    "But to do those things, you first need a map."
+    "Here. This is the Map of Kardalis, the continent you are on right now."
+    "With this map, you now have access to shops, trades, adventures, quests, and more!"
+]
+for line in messages:
+    time.sleep(2)
+    print(line)
+    break
+
+#this happens when character reaches level 5, 10, or something
+messages = [
+    "Congratulations! You have reached level (number)!"
+    "To allow some quick progression, we will give you an item!"
+    "There are two types of items: Usables, and Equippables."
+    "Usables are items that go into your inventory and can be used at any time."
+    "Equippables give you a boost in stats, but only a certain amount of Equippables can be equipped at one time."
+    "Have fun!"
+]
+for line in messages:
+    time.sleep(2)
+    print(line)
+    break
+
+#REMINDER ON THINGS TO ADD ("With this map, you now have access to shops, trades, adventures, quests, and more!")
