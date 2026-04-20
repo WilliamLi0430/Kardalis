@@ -62,5 +62,3 @@ for line in messages:
     time.sleep(2)
     print(line)
     break
-
-#REMINDER ON THINGS TO ADD ("With this map, you now have access to shops, trades, adventures, quests, and more!")
