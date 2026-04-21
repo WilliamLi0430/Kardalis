@@ -13,3 +13,12 @@ for line in messages:
     time.sleep(2)
     print(line)
     break
+
+messages = [
+    "Hi! I'm {shopkeeper name}!"
+    "After every battle you go in, my wares change!"
+    "Prices on rarer items will be more expensive than others."
+    "However, I can give you a discount every once in a while."
+    "Here, would you like a free sample?"
+    "{give free item}"
+]
